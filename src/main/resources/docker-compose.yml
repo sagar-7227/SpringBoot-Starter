@@ -5,17 +5,10 @@ services:
     container_name: "javatechiemongodb"
     ports:
       - 27017:27017
-    networks:
-      - mynet
-
   springboot-mongodb:
     image: springboot-mongodb:1.0
     container_name: springboot-mongodb
     ports:
       - 8080:8080
-    networks:
-      - mynet
-
-networks:
-  mynet:
-    driver: bridge
+    links:
+      - javatechiemongodb:mongo
